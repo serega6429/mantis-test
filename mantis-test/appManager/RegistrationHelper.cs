@@ -16,29 +16,29 @@ namespace mantis_test
         {
             OpenMainPage();
             OpenRegistartionForm();
-            FillRegistrationForm();
+            FillRegistrationForm(account);
             SubmitRegistration();
         }
 
         private void OpenRegistartionForm()
         {
-            driver.FindElements(By.CssSelector("span.bracket-link"))[0].Click();
+            driver.FindElement(By.XPath("//div[@class='toolbar center']//a")).Click();
         }
 
         private void SubmitRegistration()
         {
-            throw new NotImplementedException();
+            //driver.FindElement(By.Name("signup_token")).FindElement(By.) .Click();
         }
 
         private void FillRegistrationForm(AccountData account)
         {
-            driver.FindElement(By.ClassName("username")).SendKeys(account.Name);
-            driver.FindElement(By.ClassName("email")).SendKeys(account.Email);
+            driver.FindElement(By.Name("username")).SendKeys(account.Name);
+            driver.FindElement(By.Name("email")).SendKeys(account.Email);
         }
 
         private void OpenMainPage()
         {
-            manager.Driver.Url = "";
+            manager.Driver.Url = "http://localhost/mantisbt-2.21.1/login_page.php"; 
         }
     }
 }

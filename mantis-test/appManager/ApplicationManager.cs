@@ -11,6 +11,7 @@ namespace mantis_test
         protected IWebDriver driver;
         protected StringBuilder verificationErrors;
         protected string baseURL;
+        
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -21,6 +22,10 @@ namespace mantis_test
             BASEURL = "http://localhost/addressbook";
             verificationErrors = new StringBuilder();
             Registration = new RegistrationHelper(this);
+            Ftp = new FtpHelper(this);
+            Login = new LoginHelper(this);
+            Navigator = new NavigatorHelper(this);
+            Project = new ProjectHelper(this);
         }
 
         ~ApplicationManager()
@@ -50,5 +55,9 @@ namespace mantis_test
         public IWebDriver Driver { get; }
         public string BASEURL { get; set; }
         public RegistrationHelper Registration {get; set;}
+        public FtpHelper Ftp { get; set; }
+        public LoginHelper Login { get; set; }
+        public NavigatorHelper Navigator { get; set; }
+        public ProjectHelper Project { get;  set; }
     }
 }
