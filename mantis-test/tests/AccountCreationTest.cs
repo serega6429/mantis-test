@@ -27,6 +27,12 @@ namespace mantis_test
                 Password = "password",
                 Email = "testuser@localhost.localdomain"
             };
+            List<AccountData> accounts = app.Admin.GetAllAccounts();
+            AccountData existingAcc = accounts.Find(x => x.Name == account.Name);
+            if(existingAcc != null)
+            {
+                app.Admin.DeleteAccount(existingAcc);
+            }
             app.Registration.Register(account);
         }
         [TestFixtureTearDown]

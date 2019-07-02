@@ -1,7 +1,7 @@
 {
     "schedule": "daily",
     "ignoredFiles": [
-        "css/images/*",
+        "css/images/*"
     ],
     "aggressiveCompression": "false"
 }

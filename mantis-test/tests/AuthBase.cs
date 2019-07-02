@@ -5,11 +5,7 @@ namespace mantis_test
 {
     public class AuthBase : TestBase
     {
-        private AccountData admin = new AccountData()
-        {
-            Name = "administrator",
-            Password = "admin"
-        };
+        
         [TestFixtureSetUp]
         public void Login()
         {

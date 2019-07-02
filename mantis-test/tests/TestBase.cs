@@ -6,6 +6,11 @@ namespace mantis_test
 {
     public class TestBase
     {
+        protected AccountData admin = new AccountData()
+        {
+            Name = "administrator",
+            Password = "admin"
+        };
         protected ApplicationManager app;
         public static Random rnd = new Random();
         public static bool PERFOM_LONG_UI_CHECK = true;

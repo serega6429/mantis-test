@@ -19,13 +19,15 @@ namespace mantis_test
         {
             Driver = new FirefoxDriver();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            BASEURL = "http://localhost/addressbook";
+            BASEURL = "http://localhost/mantisbt-2.21.1";
             verificationErrors = new StringBuilder();
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             Login = new LoginHelper(this);
             Navigator = new NavigatorHelper(this);
             Project = new ProjectHelper(this);
+            Admin = new AdminHelper(this, BASEURL);
+            Api = new ApiHelper(this);
         }
 
         ~ApplicationManager()
@@ -46,7 +48,7 @@ namespace mantis_test
             if (!app.IsValueCreated)
             {
                 app.Value = new ApplicationManager();
-                app.Value.Driver.Url = "http://localhost/mantisbt-2.21.1/login_page.php";
+                app.Value.Driver.Url = app.Value.BASEURL + "/login_page.php";
                 //app.Value.Navigator.OpenLoginPage();
             }
             return app.Value;
@@ -59,5 +61,7 @@ namespace mantis_test
         public LoginHelper Login { get; set; }
         public NavigatorHelper Navigator { get; set; }
         public ProjectHelper Project { get;  set; }
+        public AdminHelper Admin { get; set; }
+        public ApiHelper Api { get; set; }
     }
 }
