@@ -15,9 +15,9 @@ namespace mantis_test
             {
                 Name = DateTime.Now.Second.ToString()
             };
-            List<ProjectData> oldList = app.Project.GetList();
+            List<ProjectData> oldList = app.Api.GetListProjects(admin);
             app.Project.Create(projectData);
-            List<ProjectData> newList = app.Project.GetList();
+            List<ProjectData> newList = app.Api.GetListProjects(admin);
 
             oldList.Add(projectData);
             oldList.Sort();

@@ -13,24 +13,12 @@ namespace mantis_test
         [Test]
         public void TestRemoveProject()
         {
-            ProjectData projectData;
-            List<ProjectData> oldList = app.Project.GetList();
-            if (oldList.Count == 0)
-            {
-                projectData = new ProjectData()
-                {
-                    Name = DateTime.Now.Second.ToString()
-                };
-                app.Project.Create(projectData);
-                oldList.Add(projectData);
-            }
-            else
-            {
-                projectData = oldList[0];
-            }
+            IfNeedToCreateProject();
+            List<ProjectData> oldList = app.Api.GetListProjects(admin);
+            ProjectData projectData = oldList[0];
 
             app.Project.Remove(projectData);
-            List<ProjectData> newList = app.Project.GetList();
+            List<ProjectData> newList = app.Api.GetListProjects(admin);
             Assert.AreEqual(oldList.Count - 1, newList.Count);
             oldList.Remove(projectData);
 

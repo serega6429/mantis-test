@@ -31,5 +31,16 @@ namespace mantis_test
             }
             return bld.ToString();
         }
+        protected void IfNeedToCreateProject()
+        {
+            if (app.Api.GetListProjects(admin).Count == 0)
+            {
+                ProjectData projectData = new ProjectData()
+                {
+                    Name = DateTime.Now.Second.ToString()
+                };
+                app.Api.CreateProject(admin, projectData);
+            }
+        }
     }
 }

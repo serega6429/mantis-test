@@ -13,12 +13,14 @@ namespace mantis_test
         [Test]
         public void AddNewIssueTest()
         {
+            IfNeedToCreateProject();
+            ProjectData project = app.Api.GetListProjects(admin)[0];
             IssueData issue = new IssueData() {
             Summary = "aaaaa",
             Description = "add asdasd dada",
-            Category = "1", 
+            Category = "General", 
             };
-            app.Api.CreateIssue(admin, issue);
+            app.Api.CreateIssue(admin, project, issue);
         }
 
     }
